@@ -1,0 +1,162 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+import { cities } from '../data/tour';
+---
+
+<SiteLayout title="GROWTH Tour | AI, Business & Wealth" description="GROWTH brings business, AI, and wealth together. Explore the speakers and tour stops in Atlanta, Phoenix, and Houston.">
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="/">
+        <span class="brand-mark"></span>
+        <span>GROWTH</span>
+      </a>
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="#tour">Tour</a>
+        <a href="#speakers">Speakers</a>
+        <a href="#tickets">Tickets</a>
+        <a href="#faq">FAQs</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="hero-copy">
+          <p class="eyebrow">Build momentum</p>
+          <h1>Growth — AI, Business & Wealth</h1>
+          <p>
+            GROWTH brings entrepreneurs, operators, and investors together to learn practical strategies
+            for business, AI adoption, and lasting wealth.
+          </p>
+          <div class="cta-row">
+            <a class="button primary" href="#tour">See the tour</a>
+            <a class="button secondary" href="#tickets">Get tickets</a>
+          </div>
+
+          <div class="feature-stack">
+            <article class="feature-card">
+              <strong>Business</strong>
+              <p>Learn from people who have built and scaled ventures.</p>
+            </article>
+            <article class="feature-card">
+              <strong>AI</strong>
+              <p>Use technology to remove friction and grow smarter.</p>
+            </article>
+            <article class="feature-card">
+              <strong>Wealth</strong>
+              <p>Create systems that accelerate financial clarity.</p>
+            </article>
+          </div>
+        </div>
+
+        <div class="hero-visual" aria-label="Featured speaker lineup preview">
+          <div class="speaker-board">
+            <div class="speaker-piece">AI</div>
+            <div class="speaker-piece">Build</div>
+            <div class="speaker-piece">Scale</div>
+            <div class="speaker-piece">Wealth</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="city-section" id="tour">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <p class="kicker">Your next stop</p>
+            <h2>Find your city.</h2>
+          </div>
+        </div>
+
+        <div class="city-grid">
+          {cities.map((city) => (
+            <article class="city-card" data-tone={city.accent}>
+              <div class="city-art"></div>
+              <div class="city-body">
+                <div class="city-meta">{city.date}</div>
+                <h3>{city.name}</h3>
+                <p>{city.teaser}</p>
+                <a class="button primary" href={`/${city.slug}/`}>View event</a>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-section" id="tickets">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <p class="kicker">Stay on the list</p>
+            <h2>Get first access.</h2>
+          </div>
+        </div>
+
+        <form class="lead-form" method="get" action="/thank-you">
+          <div class="form-grid">
+            <label class="field">
+              First name
+              <input type="text" name="firstName" placeholder="Alex" />
+            </label>
+            <label class="field">
+              Last name
+              <input type="text" name="lastName" placeholder="Morgan" />
+            </label>
+          </div>
+
+          <label class="field">
+            Email
+            <input type="email" name="email" placeholder="you@example.com" />
+          </label>
+
+          <label class="field">
+            City
+            <select name="city">
+              {cities.map((city) => (
+                <option value={city.slug}>{city.name}</option>
+              ))}
+            </select>
+          </label>
+
+          <button class="button primary" type="submit">Join the early list</button>
+        </form>
+      </div>
+    </section>
+
+    <section class="info-section" id="faq">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <p class="kicker">Good to know</p>
+            <h2>Why this works.</h2>
+          </div>
+        </div>
+
+        <div class="city-strip">
+          <article class="info-card">
+            <h3>Static, fast, and easy to scale</h3>
+            <p>A single data source powers all city pages without repeating the same markup.</p>
+          </article>
+          <article class="info-card">
+            <h3>Built for lead capture</h3>
+            <p>Forms can plug directly into HubSpot, Stripe, or a ticketing workflow without a CMS dependency.</p>
+          </article>
+          <article class="info-card">
+            <h3>Easy to ship globally</h3>
+            <p>Astro generates a fast static build that can live on Netlify, Vercel, or Cloudflare Pages.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div>GROWTH Tour</div>
+      <div>Business • AI • Wealth</div>
+    </div>
+  </footer>
+</SiteLayout>

@@ -1,0 +1,137 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+import { cities, getCityBySlug } from '../data/tour';
+
+export function getStaticPaths() {
+  return cities.map((city) => ({ params: { city: city.slug } }));
+}
+
+const { city } = Astro.params;
+const current = getCityBySlug(city);
+
+if (!current) {
+  throw new Error('City not found');
+}
+---
+
+<SiteLayout title={`${current.name} | GROWTH Tour`} description={`${current.teaser} Explore the speakers, venue, and ticket tiers for ${current.name}.`}>
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="/">
+        <span class="brand-mark"></span>
+        <span>GROWTH</span>
+      </a>
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="/#tour">Tour</a>
+        <a href="/#speakers">Speakers</a>
+        <a href="/#tickets">Tickets</a>
+        <a href="/#faq">FAQs</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container city-page">
+    <section class="city-hero">
+      <div>
+        <p class="kicker">GROWTH Tour / {current.name.toUpperCase()}</p>
+        <h1>{current.name}</h1>
+        <p style="color: var(--muted);">{current.teaser}</p>
+        <div class="cta-row">
+          <a class="button primary" href="#tickets">Get tickets</a>
+          <a class="button secondary" href="/">All cities</a>
+        </div>
+      </div>
+      <div class="hero-panel" data-tone={current.accent} style={`background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));`}></div>
+    </section>
+
+    <section class="city-strip">
+      <article class="info-card">
+        <h3>Venue</h3>
+        <p>{current.venue}</p>
+      </article>
+      <article class="info-card">
+        <h3>Date</h3>
+        <p>{current.date}</p>
+      </article>
+      <article class="info-card">
+        <h3>Focus</h3>
+        <p>Business • AI • Wealth</p>
+      </article>
+    </section>
+
+    <section id="tickets">
+      <div class="section-header">
+        <div>
+          <p class="kicker">Tickets</p>
+          <h2>Find your ticket.</h2>
+        </div>
+      </div>
+
+      <div class="ticket-grid">
+        <article class="ticket-card">
+          <h3>General Admission</h3>
+          <div class="price">$49</div>
+          <ul>
+            <li>Full event access</li>
+            <li>Speaker sessions</li>
+            <li>Networking floor</li>
+          </ul>
+          <a href="/thank-you" class="button primary">Select ticket</a>
+        </article>
+
+        <article class="ticket-card">
+          <h3>Plus</h3>
+          <div class="price">$95</div>
+          <ul>
+            <li>Everything in GA</li>
+            <li>VIP lounge access</li>
+            <li>Priority seating</li>
+          </ul>
+          <a href="/thank-you" class="button primary">Select ticket</a>
+        </article>
+
+        <article class="ticket-card">
+          <h3>Premium</h3>
+          <div class="price">$250</div>
+          <ul>
+            <li>All Plus benefits</li>
+            <li>Meet & greet</li>
+            <li>Founder circle</li>
+          </ul>
+          <a href="/thank-you" class="button primary">Select ticket</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="info-section" id="faq">
+      <div class="section-header">
+        <div>
+          <p class="kicker">Good to know</p>
+          <h2>FAQ</h2>
+        </div>
+      </div>
+
+      <div class="city-strip">
+        <article class="info-card">
+          <h3>Who is this for?</h3>
+          <p>Founders, operators, investors, and professionals building businesses that need real-world strategy.</p>
+        </article>
+        <article class="info-card">
+          <h3>What should I bring?</h3>
+          <p>Bring your ticket, a notebook, and your biggest question for the room.</p>
+        </article>
+        <article class="info-card">
+          <h3>What happens next?</h3>
+          <p>Tickets and attendance details are managed through your event provider, not the prototype site.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div>GROWTH Tour • {current.name}</div>
+      <div>Business • AI • Wealth</div>
+    </div>
+  </footer>
+</SiteLayout>

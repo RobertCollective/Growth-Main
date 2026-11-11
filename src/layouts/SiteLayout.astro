@@ -1,0 +1,22 @@
+---
+import '../styles/global.css';
+
+const {
+  title = 'GROWTH Tour',
+  description = 'GROWTH brings business, AI, and wealth together.'
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#050405" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
