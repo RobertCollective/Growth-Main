@@ -3,18 +3,18 @@ import SiteLayout from '../layouts/SiteLayout.astro';
 import { cities, cityList } from '../data/tour';
 ---
 
-<SiteLayout title="GROWTH Tour — AI, Business & Wealth" description={`GROWTH brings business, AI, and wealth together. Explore the speakers and tour stops in ${cityList()}.`}>
+<SiteLayout title="Growth Tour — AI, Business & Wealth" description={`Growth brings business, AI, and wealth together. Explore the speakers and tour stops in ${cityList()}.`}>
   <header class="site-header">
     <div class="container">
       <a class="brand" href="/">
         <span class="brand-mark"></span>
-        <span>GROWTH</span>
+        <span>Growth</span>
       </a>
       <nav class="site-nav" aria-label="Main navigation">
-        <a href="#tour">Tour</a>
-        <a href="#speakers">Speakers</a>
-        <a href="#tickets">Tickets</a>
-        <a href="#faq">FAQs</a>
+        <a href="/#tour">Tour</a>
+        <a href="/#speakers">Speakers</a>
+        <a href="/#tickets">Tickets</a>
+        <a href="/#faq">FAQs</a>
       </nav>
     </div>
   </header>
@@ -26,12 +26,10 @@ import { cities, cityList } from '../data/tour';
           <p class="eyebrow">Build momentum</p>
           <h1>Growth — AI, Business & Wealth</h1>
           <p>
-            GROWTH brings entrepreneurs, operators, and investors together to learn practical strategies
-            for business, AI adoption, and lasting wealth.
+            Growth brings entrepreneurs, operators, and investors together to learn practical strategies
           </p>
           <div class="cta-row">
-            <a class="button primary" href="#tour">See the tour</a>
-            <a class="button secondary" href="#tickets">Get tickets</a>
+            <a class="button primary" href="#tickets">Get tickets</a>
           </div>
 
           <div class="feature-stack">
@@ -78,7 +76,7 @@ import { cities, cityList } from '../data/tour';
                 <div class="city-meta">{city.date}</div>
                 <h3>{city.name}</h3>
                 <p>{city.teaser}</p>
-                <a class="button primary" href={`/${city.slug}/`}>View event</a>
+                <a class="button primary" href={`/${city.slug}/#tickets`}>Get tickets</a>
               </div>
             </article>
           ))}
@@ -155,8 +153,7 @@ import { cities, cityList } from '../data/tour';
 
   <footer class="footer">
     <div class="container">
-      <div>GROWTH Tour</div>
-      <div>Business • AI • Wealth</div>
+      <div>Growth Tour</div>
     </div>
   </footer>
 </SiteLayout>
