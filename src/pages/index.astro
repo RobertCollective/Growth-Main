@@ -1,9 +1,9 @@
 ---
 import SiteLayout from '../layouts/SiteLayout.astro';
-import { cities } from '../data/tour';
+import { cities, cityList } from '../data/tour';
 ---
 
-<SiteLayout title="GROWTH Tour | AI, Business & Wealth" description="GROWTH brings business, AI, and wealth together. Explore the speakers and tour stops in Atlanta, Phoenix, and Houston.">
+<SiteLayout title="GROWTH Tour — AI, Business & Wealth" description={`GROWTH brings business, AI, and wealth together. Explore the speakers and tour stops in ${cityList()}.`}>
   <header class="site-header">
     <div class="container">
       <a class="brand" href="/">

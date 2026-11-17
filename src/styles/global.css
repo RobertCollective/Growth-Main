@@ -9,6 +9,7 @@
   --blue: #025ed6;
   --yellow: #f6e31a;
   --pink: #ff6aab;
+  --red: #fd0215;
   --green: #7ef8c3;
   --shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
 }
@@ -254,13 +255,15 @@ button, input, select {
   font-weight: 700;
 }
 
+/* Four tour stops: 4 across on desktop (one column below 900px, see media query). */
 .city-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 1.5rem;
 }
 
 .city-card {
+  container-type: inline-size;
   display: flex;
   flex-direction: column;
   background: rgba(255,255,255,0.03);
@@ -279,6 +282,7 @@ button, input, select {
 .city-card[data-tone='blue'] .city-art { background: linear-gradient(135deg, rgba(2,94,214,0.6), rgba(2,94,214,0.12)); }
 .city-card[data-tone='yellow'] .city-art { background: linear-gradient(135deg, rgba(246,227,26,0.5), rgba(246,227,26,0.12)); }
 .city-card[data-tone='pink'] .city-art { background: linear-gradient(135deg, rgba(255,106,171,0.52), rgba(255,106,171,0.1)); }
+.city-card[data-tone='red'] .city-art { background: linear-gradient(135deg, rgba(253,2,21,0.55), rgba(253,2,21,0.12)); }
 
 .city-card .city-body {
   padding: 1.5rem;
@@ -286,7 +290,9 @@ button, input, select {
 
 .city-card h3 {
   margin: 0 0 0.5rem;
-  font-size: 2rem;
+  /* Shrinks with the card so long names (Fort Lauderdale) fit 4 across. */
+  font-size: min(2rem, 12cqi);
+  line-height: 1.05;
   letter-spacing: -0.05em;
   text-transform: uppercase;
 }
@@ -358,6 +364,7 @@ button, input, select {
 .city-hero h1 {
   margin: 0.5rem 0 1rem;
   font-size: clamp(3rem, 7vw, 6rem);
+  line-height: 0.95;
   letter-spacing: -0.07em;
   text-transform: uppercase;
 }
