@@ -84,9 +84,10 @@
 // Mobile speaker tiles exchange real grid positions with horizontal and vertical moves.
 (()=>{
  const grid=document.querySelector('.speaker-lineup.stacked-mobile');
- const mobile=matchMedia('(max-width:800px)'),motion=matchMedia('(prefers-reduced-motion: reduce)');
+ const mobile=matchMedia('(max-width:600px)'),motion=matchMedia('(prefers-reduced-motion: reduce)');
  let order=[...grid.querySelectorAll('.speaker-column:not(.speaker-preview)')];
  const preview=grid.querySelector('.speaker-preview');if(preview)preview.remove();
+ const originalOrder=[...order];
  // Keep each speaker's brand color while their position changes.
  order.forEach(tile=>{const style=getComputedStyle(tile);tile.style.background=style.backgroundColor;tile.style.color=style.color});
  let visible=false,busy=false,step=0,restUntil=0;
@@ -97,6 +98,8 @@
    const andrew=order.findIndex(tile=>tile.querySelector('img')?.getAttribute('src').includes('andrew-cordle'));
    if(andrew>=0&&andrew!==featured)[order[andrew],order[featured]]=[order[featured],order[andrew]];
    order.forEach(tile=>grid.append(tile));
+    }else{
+     order=[...originalOrder];order.forEach(tile=>grid.append(tile));
   }
   order.forEach((tile,i)=>{tile.style.gridArea=mobile.matches?String.fromCharCode(97+i):'';tile.classList.toggle('bento-narrow',mobile.matches&&(step%2===0?i>=4:i===2||i===3))});
  }
