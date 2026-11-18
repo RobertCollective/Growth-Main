@@ -303,3 +303,33 @@ if(!reduced){
  if(window.growthIntroActive)document.addEventListener('growth-intro-complete',play,{once:true});else play();
  motion.addEventListener('change',()=>{if(motion.matches)logo.pause();else play()});
 })();
+
+// Branded kinetic homepage menu.
+(()=>{
+  const toggle=document.querySelector('.growth-menu-toggle');
+  const menu=document.querySelector('.growth-kinetic-menu');
+  const closeButton=document.querySelector('.growth-menu-close');
+  if(!toggle||!menu||!closeButton)return;
+
+  let previousFocus=null;
+  function openMenu(){
+    previousFocus=document.activeElement;
+    menu.classList.add('is-open');
+    menu.setAttribute('aria-hidden','false');
+    toggle.setAttribute('aria-expanded','true');
+    document.body.classList.add('growth-menu-open');
+    closeButton.focus();
+  }
+  function closeMenu(){
+    menu.classList.remove('is-open');
+    menu.setAttribute('aria-hidden','true');
+    toggle.setAttribute('aria-expanded','false');
+    document.body.classList.remove('growth-menu-open');
+    if(previousFocus&&typeof previousFocus.focus==='function')previousFocus.focus();
+  }
+
+  toggle.addEventListener('click',()=>menu.classList.contains('is-open')?closeMenu():openMenu());
+  closeButton.addEventListener('click',closeMenu);
+  menu.querySelectorAll('a[href^="#"]').forEach(link=>link.addEventListener('click',closeMenu));
+  addEventListener('keydown',event=>{if(event.key==='Escape'&&menu.classList.contains('is-open'))closeMenu()});
+})();
