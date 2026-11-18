@@ -292,3 +292,13 @@
 
 /* Atlanta (red) page: white GROWTH logo on the event ticket, like the blue page. */
 .stop-page[style*='#fd0215'] .stop-event-ticket>img:first-child{filter:none}
+
+/* Keep the compact menu label plain and the ticket action anchored in its card. */
+@media(max-width:800px){
+ .stop-menu-header{left:auto;right:auto;width:100%}
+ .stop-mobile-menu summary{appearance:none;-webkit-appearance:none;background:transparent;border:0;border-radius:0;box-shadow:none;padding:0 2px}
+ .stop-mobile-menu[open] summary{background:transparent;border-color:transparent;color:#f6e31a}
+}
+.stop-tier .tier-content{min-width:0}
+.stop-tier .tier-details{min-height:6.25rem}
+.stop-tier .tier-select{position:relative;z-index:10;isolation:isolate;flex:0 0 auto;width:100%;min-height:48px;margin-top:auto;line-height:1.25;overflow-wrap:anywhere}
