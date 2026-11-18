@@ -17,7 +17,7 @@
 .stop-section-heading{max-width:1250px;margin:0 auto 32px}
 .stop-section-heading h2{font-size:clamp(48px,6.7vw,96px);line-height:1.02;margin:0}
 .stop-bento.speaker-lineup{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));height:330px;gap:8px;padding:0;overflow:hidden;background:#050405;max-width:1440px;margin:auto;align-items:stretch}
-.stop-bento .stop-speaker{display:flex;flex-direction:column;justify-content:space-between;width:auto;height:auto;min-width:0;min-height:0;margin:0!important;border-radius:12px;animation:none!important;container-type:inline-size}
+.stop-bento .stop-speaker{position:relative;display:flex;flex-direction:column;justify-content:space-between;width:auto;height:auto;min-width:0;min-height:0;margin:0!important;border-radius:12px;animation:none!important;container-type:inline-size}
 .stop-bento .speaker-name{font-size:clamp(22px,17cqw,38px);line-height:1;padding:16px 12px 8px;margin:0;min-height:0;flex:none;text-align:left}
 .stop-bento .speaker-photo{position:relative;flex:0 0 auto;width:100%;aspect-ratio:1.23;min-height:0;overflow:hidden}
 .stop-bento .speaker-photo img{position:absolute;top:0;left:0;width:100%;height:auto;max-width:none;object-fit:initial;transform:none!important;animation:none!important}
@@ -293,6 +293,8 @@
 /* Atlanta (red) page: white GROWTH logo on the event ticket, like the blue page. */
 .stop-page[style*='#fd0215'] .stop-event-ticket>img:first-child{filter:none}
 
+.stop-footer{position:relative;inset:auto;left:auto;right:auto;bottom:auto;top:auto;width:auto;transform:none;text-align:left}
+
 /* Keep the compact menu label plain and the ticket action anchored in its card. */
 @media(max-width:800px){
  .stop-menu-header{left:auto;right:auto;width:100%}
@@ -304,7 +306,15 @@
 .stop-tier .tier-select{position:relative;z-index:10;isolation:isolate;flex:0 0 auto;width:100%;min-height:48px;margin-top:auto;line-height:1.25;overflow-wrap:anywhere}
 
 @media(min-width:601px) and (max-width:800px){
- .stop-bento.speaker-lineup{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:none;grid-auto-rows:clamp(280px,42vw,340px);grid-template-areas:none;gap:12px;height:auto}
+ .stop-lineup,.stop-experience,.stop-energy,.stop-statement,.stop-arrival{padding:30px 20px}
+ .stop-price-intro{padding:26px 20px}
+ .stop-founder{padding:30px 20px;gap:22px}
+ .stop-faq{padding:30px 20px}
+ .stop-other-cities{padding:24px 20px}
+ .stop-skyline{height:clamp(320px,47vw,360px)}
+ .stop-lineup .stop-section-heading{margin-bottom:12px}
+ .stop-bento.speaker-lineup{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:none;grid-auto-rows:clamp(250px,34vw,290px);grid-template-areas:none;gap:12px;height:auto}
  .stop-bento .stop-speaker{position:relative;min-height:0;border-radius:12px;overflow:hidden}
  .stop-bento .stop-speaker .speaker-name{font-size:clamp(28px,5vw,36px);padding:30px 14px 16px}
+ .tier-photo.tier-badge-image{height:clamp(280px,42vw,340px);aspect-ratio:auto}
 }
