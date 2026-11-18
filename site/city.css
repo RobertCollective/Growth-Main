@@ -318,3 +318,32 @@
  .stop-bento .stop-speaker .speaker-name{font-size:clamp(28px,5vw,36px);padding:30px 14px 16px}
  .tier-photo.tier-badge-image{height:clamp(280px,42vw,340px);aspect-ratio:auto}
 }
+
+/* 2027 ticket tiers: three paid tiers, each on its sponsor-deck color. */
+.stop-tier-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;border:0;border-radius:0;overflow:visible;background:none}
+.stop-tier,.stop-tier:nth-child(n){border:0;border-radius:20px;overflow:hidden}
+.stop-tier.tier-standard{background:#025ed6;color:#fff}
+.stop-tier.tier-premium{background:#fd0215;color:#fff}
+.stop-tier.tier-ultimate{background:#020202;color:#fff;box-shadow:inset 0 0 0 1px #ffffff40}
+.stop-tier .tier-content{padding:28px 24px;text-align:left}
+.stop-tier .stop-tier-label{justify-content:flex-start;min-height:0;font-family:var(--display-font);font-variation-settings:'wght' 90,'wdth' 22;font-size:clamp(40px,4vw,56px);font-weight:900;line-height:1}
+.stop-tier .stop-tier-price{margin-top:18px}
+.stop-page .stop-tier .tier-per-ticket{font-size:15px;margin:2px 0 20px;color:inherit}
+.tier-per-ticket s{opacity:.8;margin-left:6px}
+.stop-tier .tier-details{list-style:none;margin:0;padding:0 0 24px;border-top:0;gap:0;min-height:0;align-content:start}
+.tier-details li{position:relative;padding:11px 0 11px 20px;border-top:1px solid #ffffff59}
+.tier-details li:before{content:'';position:absolute;left:2px;top:1.15em;width:8px;height:8px;border-radius:50%;background:currentColor}
+.tier-ultimate .stop-tier-label,.tier-ultimate .stop-tier-price{color:#f6e31a}
+.tier-ultimate .tier-details li:before{background:#f6e31a}
+.stop-tier .tier-select{background:#fff;color:#020202}
+.stop-tier .tier-select:hover{background:#020202;color:#fff}
+.stop-tier.tier-ultimate .tier-select{background:#f6e31a;color:#020202}
+.stop-tier.tier-ultimate .tier-select:hover{background:#fff;color:#020202}
+.stop-tier .tier-select.is-selected,.stop-tier .tier-select.is-selected:hover{background:#020202;color:#fff;box-shadow:inset 0 0 0 2px #fff}
+.stop-tier.tier-ultimate .tier-select.is-selected,.stop-tier.tier-ultimate .tier-select.is-selected:hover{background:#fff;color:#020202;box-shadow:none}
+@media(max-width:800px){
+ .stop-tier-grid{grid-template-columns:1fr;gap:14px}
+ .stop-tier .tier-content{padding:24px 20px}
+ .stop-tier .stop-tier-price{font-size:52px}
+ .tier-details{font-size:14px}
+}
