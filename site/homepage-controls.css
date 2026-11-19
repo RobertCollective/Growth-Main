@@ -75,3 +75,12 @@ body.growth-menu-open .growth-hero-ticket,body.growth-menu-open .growth-menu-tog
 }
 
 @media(prefers-reduced-motion:reduce){.growth-kinetic-menu,.growth-menu-panels span,.growth-menu-links a,.growth-shape,.growth-menu-icon i{transition:none}}
+
+/* Hovered menu words switch to black wherever they cross the stripe of their own hover color
+   (pink stripe = 40–60% of the viewport, yellow = 60–80%). The fill is sized to the viewport
+   and offset by the link's position so it lines up with the background stripes. */
+.growth-menu-links{--menu-w:min(900px,100vw - 48px);--menu-num:70px}
+.growth-menu-links a:is(:nth-child(2),:nth-child(3),:nth-child(5)){--hover:#ff6aab;--ink-from:40%;--ink-to:60%}
+.growth-menu-links a:is(:nth-child(1),:nth-child(4),:nth-child(6)){--hover:#f6e31a;--ink-from:60%;--ink-to:80%}
+.growth-menu-links a:is(:hover,:focus-visible) strong{color:transparent;-webkit-text-fill-color:transparent;background:linear-gradient(90deg,var(--hover) var(--ink-from),#020202 var(--ink-from) var(--ink-to),var(--hover) var(--ink-to)) no-repeat calc((var(--menu-w) - 100vw)/2 - var(--menu-num)) 0/100vw 100%;-webkit-background-clip:text;background-clip:text}
+@media(max-width:800px){.growth-menu-links{--menu-w:calc(100vw - 40px);--menu-num:44px}}
