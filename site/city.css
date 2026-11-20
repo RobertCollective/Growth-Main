@@ -352,3 +352,5 @@
 @media(min-width:901px){.stop-event-ticket{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);grid-template-rows:auto 1fr;column-gap:40px}.stop-event-ticket>img:first-child{grid-column:1;margin:0 0 28px}.stop-event-ticket dl{grid-column:1;margin:0}.stop-event-ticket .stop-booking{grid-column:2;grid-row:1/span 2;border-top:0;border-left:2px dashed currentColor;padding:0 0 0 40px}}
 /* The lowercase brand word inside ticket feature lists is plain inline text, not a ✓ bullet. */
 .tier-details .brand-lc{display:inline;position:static;padding:0}.tier-details .brand-lc:before{content:none}
+/* Long city names (Fort Lauderdale) sized to fit the phone width in Anton. */
+@media(max-width:800px){.stop-hero h1.stop-title-long{font-size:calc((100vw - 44px) / 4.6)}}

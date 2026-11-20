@@ -1,37 +1,9 @@
 @font-face {
   font-family: 'Anton';
   font-style: normal;
-  font-weight: 400;
+  font-weight: 100 900;
   font-display: swap;
   src: url(1Ptgg87LROyAm0K0.ttf) format('truetype');
-}
-@font-face {
-  font-family: 'Barlow Condensed';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url(HTx3L3I-JCGChYJ8VI-L6OO_au7B2xY.ttf) format('truetype');
-}
-@font-face {
-  font-family: 'Barlow Condensed';
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-  src: url(HTxwL3I-JCGChYJ8VI-L6OO_au7B4-Lw_3E.ttf) format('truetype');
-}
-@font-face {
-  font-family: 'Barlow Condensed';
-  font-style: normal;
-  font-weight: 600;
-  font-display: swap;
-  src: url(HTxwL3I-JCGChYJ8VI-L6OO_au7B4873_3E.ttf) format('truetype');
-}
-@font-face {
-  font-family: 'Barlow Condensed';
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  src: url(HTxwL3I-JCGChYJ8VI-L6OO_au7B46r2_3E.ttf) format('truetype');
 }
 @font-face {
   font-family: 'DM Sans';
@@ -60,4 +32,20 @@
   font-weight: 700;
   font-display: swap;
   src: url(rP2tp2ywxg089UriI5-g4vlH9VoD8CmcqZG40F9JadbnoEwARZthTg.ttf) format('truetype');
+}
+
+/* Syncopate (approved wide display face), self-hosted like the fonts above. */
+@font-face {
+  font-family: 'Syncopate';
+  font-style: normal;
+  font-weight: 100 599;
+  font-display: swap;
+  src: url(pe0sMIuPIYBCpEV5eFdyAg.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Syncopate';
+  font-style: normal;
+  font-weight: 600 900;
+  font-display: swap;
+  src: url(pe0pMIuPIYBCpEV5eFdKvtKaAw.ttf) format('truetype');
 }
