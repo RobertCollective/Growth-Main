@@ -262,7 +262,7 @@ if(!reduced){
 // Text reveals in discrete character steps, while keeping its final layout intact.
 (()=>{
  const preference=matchMedia('(prefers-reduced-motion: reduce)');
- const selector='.hero-city,.story-intro h2,.story-panel h3,.benefit-row h4,.editorial-heading,.founder-copy h2,.founder-bio h3,.tour-intro h2,.tour-card h3,.pop-archive h2,.growth-faq h2';
+ const selector='.hero-city,.story-intro h2,.story-panel h3,.benefit-row h4,.editorial-heading,.tour-intro h2,.tour-card h3,.pop-archive h2,.growth-faq h2';
  const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{
   if(entry.isIntersecting){if(window.growthIntroActive)entry.target.dataset.typePending='true';else entry.target.classList.add('is-typed');observer.unobserve(entry.target)}
  }),{threshold:.08});
