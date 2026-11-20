@@ -1164,3 +1164,5 @@ body.growth-menu-open{overflow:hidden}
 .growth-hero-ticket,.growth-menu-toggle{z-index:2147483647!important;pointer-events:auto!important}
 .growth-hero-ticket a{position:relative;z-index:2147483647;pointer-events:auto!important}
 @media(max-width:800px){.growth-hero-ticket{right:104px}}
+/* Brand name is always written lowercase, even inside uppercase headings. */
+.brand-lc{text-transform:none!important;font-variant-caps:normal}
