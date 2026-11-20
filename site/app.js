@@ -8,8 +8,6 @@ function updateStory(){scrollFrame=0;panels.forEach((panel,i)=>{if(reduced||docu
 addEventListener('scroll',()=>{if(!scrollFrame)scrollFrame=requestAnimationFrame(updateStory)},{passive:true});addEventListener('resize',updateStory);updateStory();
 const editorialEntrance=new IntersectionObserver(entries=>entries.forEach(entry=>{entry.target.classList.toggle('in-view',entry.isIntersecting||reduced)}),{threshold:.15});document.querySelectorAll('.editorial-row').forEach(el=>editorialEntrance.observe(el));
 const communityEntrance=new IntersectionObserver(entries=>entries.forEach(entry=>{entry.target.classList.toggle('revealed',entry.isIntersecting||reduced)}),{threshold:.12});document.querySelectorAll('.community-card').forEach(el=>communityEntrance.observe(el));
-const archive=document.querySelector('.pop-archive');const archiveEntrance=new IntersectionObserver(entries=>{archive.classList.toggle('archive-visible',entries.some(e=>e.isIntersecting)||reduced)},{threshold:.15});archiveEntrance.observe(archive);
-let archiveFrame=0;function moveArchive(){archiveFrame=0;if(reduced||document.body.classList.contains('paused'))return;const r=archive.getBoundingClientRect();if(r.bottom>0&&r.top<innerHeight)archive.style.setProperty('--archive-shift',`${Math.max(-30,Math.min(30,(innerHeight*.5-r.top)*.045))}px`)}addEventListener('scroll',()=>{if(!archiveFrame)archiveFrame=requestAnimationFrame(moveArchive)},{passive:true});
 // Bounded scroll movement for the supplied background motifs.
 const motifSections=[...document.querySelectorAll('.hero,.story-panel,.editorial,.community-feed,.pop-archive')];let motifFrame=0;
 function moveMotifs(){motifFrame=0;if(reduced||document.body.classList.contains('paused'))return;motifSections.forEach(el=>{const r=el.getBoundingClientRect();if(r.bottom>0&&r.top<innerHeight)el.style.setProperty('--motif-shift',`${Math.max(-16,Math.min(16,(innerHeight*.5-r.top)*.02))}px`)})}
@@ -100,8 +98,7 @@ if(!reduced){
   {selector:'#faq',side:.86,top:100},
   {selector:'#editorial',side:.12,depth:.6},
   {selector:'#founder',side:.86,top:140},
-  {selector:'#tour',side:.12,top:240},
-  {selector:'#archive',side:.86,depth:.7}
+  {selector:'#tour',side:.12,top:240}
  ];
  const accents=specs.map(spec=>{
   const host=document.querySelector(spec.selector);if(!host)return null;
@@ -332,4 +329,13 @@ if(!reduced){
   closeButton.addEventListener('click',closeMenu);
   menu.querySelectorAll('a[href^="#"]').forEach(link=>link.addEventListener('click',closeMenu));
   addEventListener('keydown',event=>{if(event.key==='Escape'&&menu.classList.contains('is-open'))closeMenu()});
+})();
+
+// Lift the floating Tickets/Menu buttons so they rest above the footer instead of covering it.
+(()=>{
+  const footer=document.querySelector('.growth-footer');if(!footer)return;
+  const root=document.documentElement;let frame=0;
+  function lift(){frame=0;root.style.setProperty('--footer-lift',Math.max(0,innerHeight-footer.getBoundingClientRect().top)+'px')}
+  const queue=()=>{if(!frame)frame=requestAnimationFrame(lift)};
+  addEventListener('scroll',queue,{passive:true});addEventListener('resize',queue);lift();
 })();
